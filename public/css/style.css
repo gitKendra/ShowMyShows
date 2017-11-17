@@ -50,11 +50,11 @@ a:link {
 	text-decoration: none;
 }
 a:hover {
-	color: #d9d900;
+	color:#bdb21f;
 	text-decoration: none;
 }
 i {
-	color: #d9d900;
+	color:#bdb21f;;
 	font-size: 100px;
 }
 .fa-home:before {

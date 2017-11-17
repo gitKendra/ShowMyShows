@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
               model: models.user_show,
               unique: false
           },
-          oreignKey: 'showId',
+          foreignKey: 'showId',
           constraints: false
       });
   }

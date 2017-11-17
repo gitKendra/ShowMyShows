@@ -1,46 +1,3 @@
-<!-- <p>Search and Manage your TV shows with this app.</p> -->
-<div class="row">
-<div class="col-md-12">
-<form class="search-bar form-inline" id="search-form">
-	<div class="form-group">
-	  <input type="text" class="form-control" placeholder="Find a show" id="show-input">
-	</div>
-	<button type="button" class="btn btn-default" data-type="search" data-toggle="modal" data-target="#showModal">Search</button>
-</form>
-</div>
-</div>
-
-<!-- Show's username here -->
-<div class="row text-center">
-	<div class="col-md">
-	<h1 class="text-center" id="title" data-userId={{user_id}}>Hello {{username}}!!</h1>
-	</div>
-</div>
-
-<!-- Pass in first 5 favorites data form server.js -->
-<a href="/rel/{{user_id}}/favorite"><h3 class="titlecaption">Favorites: </h3></a><br>
-<div class="row fav_list justify-content-md">
-	<div class="col-md">
-		{{#each favorite}}
-			<div class="fav float-left text-center">
-	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br><p class="titleCaption">{{show.title}}</p><br></a>
-		  	</div>
-		{{/each}}
-	</div>
-</div>
-
-<!-- Pass in first 5 watchList data form server.js -->
-<a href="/rel/{{user_id}}/watchList"><h3 class="titlecaption">Watch List: </h3></a><br>
-<div class="row watchList justify-content-md">
-	<div class="col-md">
-		{{#each watchList}}
-			<div class="watch float-left text-center">
-	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br><p class="titleCaption">{{show.title}}</p><br></a>
-		  	</div>
-		{{/each}}
-	</div>
-</div>
-
 <!-- Search Show Modal -->
 <!-- Modal -->
 <div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="showModalLabel" aria-hidden="true">
@@ -72,5 +29,51 @@
     </div>
   </div>
 </div>
+
+<!-- <p>Search and Manage your TV shows with this app.</p> -->
+<div class="row">
+<div class="col-md-12">
+<form class="search-bar form-inline" id="search-form">
+	<div class="form-group">
+	  <input type="text" class="form-control" placeholder="Find a show" id="show-input">
+	</div>
+	<button type="button" class="btn btn-default" data-type="search" data-toggle="modal" data-target="#showModal">Search</button>
+</form>
+</div>
+</div>
+
+<!-- Show's username here -->
+<div class="row text-center">
+	<div class="col-md">
+	<h1 class="text-center" id="title" data-userId={{user_id}}>Hello {{username}}!!</h1>
+	</div>
+</div>
+
+<!-- Pass in first 5 favorites data form server.js -->
+<a href="/rel/{{user_id}}/favorite"><h3 class="titlecaption">Favorites: </h3></a><br>
+<div class="row fav_list justify-content-md">
+	<div class="col-md">
+		{{#each favorite}}
+			<div class="fav float-left text-center">
+	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br>
+	    		<p class="titleCaption">{{show.title}}</p><br>
+		  	</div>
+		{{/each}}
+	</div>
+</div>
+
+<!-- Pass in first 5 watchList data form server.js -->
+<a href="/rel/{{user_id}}/watchList"><h3 class="titlecaption">Watch List: </h3></a><br>
+<div class="row watchList justify-content-md">
+	<div class="col-md">
+		{{#each watchList}}
+			<div class="watch float-left text-center">
+	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br>
+	    		<p class="titleCaption">{{show.title}}</p><br>
+		  	</div>
+		{{/each}}
+	</div>
+</div>
+
 
 <script src="/js/show.js"></script>
