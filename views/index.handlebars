@@ -1,3 +1,35 @@
+<!-- Search Show Modal -->
+<!-- Modal -->
+<div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="showModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title text-center" id="ShowTitle"></h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+
+      <div class="modal-body" id="modalTextBox">
+        <div class="text-center"><img id="modImage"></div>
+		<h5 class="modalInfo">Last Aired</h5>
+		<p id="time"></p>
+	    <h5 class="modalInfo">Plot</h5>
+	    <p id="plot"></p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="fave-btn" class="btn btn-default add-btn" data-rel="favorite" data-userId={{user_id}} data-showId="0">Add to Favorites</button>
+        <button type="button" id="watch-btn" class="btn btn-default add-btn" data-rel="watchList" data-userId={{user_id}} data-showId="0">Add to Watchlist</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- <p>Search and Manage your TV shows with this app.</p> -->
 <div class="row">
 <div class="col-md-6">
@@ -19,7 +51,8 @@
 	<div class="col-md">
 		{{#each favorite}}
 			<div class="fav float-left text-center">
-	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br><p class="titleCaption">{{show.title}}</p><br></a>
+	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br>
+	    		<p class="titleCaption">{{show.title}}</p><br>
 		  	</div>
 		{{/each}}
 	</div>
@@ -31,12 +64,14 @@
 	<div class="col-md">
 		{{#each watchList}}
 			<div class="watch float-left text-center">
-	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br><p class="titleCaption">{{show.title}}</p><br></a>
+	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br>
+	    		<p class="titleCaption">{{show.title}}</p><br>
 		  	</div>
 		{{/each}}
 	</div>
 </div>
 
+<<<<<<< HEAD
 <!-- Search Show Modal -->
 <!-- Modal -->
 <div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="showModalLabel" aria-hidden="true">
@@ -70,5 +105,7 @@
     </div>
   </div>
 </div>
+=======
+>>>>>>> 1523024ab59369cc90f6ef843c9c9daae943ad3a
 
 <script src="/js/show.js"></script>

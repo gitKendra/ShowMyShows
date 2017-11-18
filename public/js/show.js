@@ -1,6 +1,7 @@
 const API_KEY = "aa07ce021371088334d6308641c7a59f";
 const API_ROOT_URL = "https://api.themoviedb.org/3/";
 
+<<<<<<< HEAD
 // Configuration for image url from the movie database
 let imgBaseUrl;
 $.ajax({
@@ -9,6 +10,16 @@ $.ajax({
 })
   .done(function(response) {
     // Set variable from API values
+=======
+// Configuration for retrieving images from the movie database API
+let imgBaseUrl;
+
+$.ajax({
+  url: API_ROOT_URL + "configuration?api_key=" + API_KEY,
+  method: "GET"
+}).done(function(response) {
+    console.log("Configuration API");
+>>>>>>> 1523024ab59369cc90f6ef843c9c9daae943ad3a
     let baseUrl = response.images.base_url;
     let size = response.images.poster_sizes[2];
     imgBaseUrl = baseUrl + size;
@@ -30,11 +41,19 @@ $("#search-form").submit(function(e){
     method: "GET"
   }).done(function(response) {
 
+<<<<<<< HEAD
     // Alert user show not found
     if (response.results.length == 0){
       $("#show-input").attr("style", "border-color: red; border-width: 1.3px");
       $("#show-input").val("");
       $("#show-input").attr("placeholder", "Show not found");
+=======
+    // Alert user that could not find the show
+    if (response.results.length == 0){
+      $("#show-input").attr("style", "border-color: red; border-width: 1.3px");
+      $("#show-input").attr("placeholder", "Show not found");
+      // e.preventDefault();
+>>>>>>> 1523024ab59369cc90f6ef843c9c9daae943ad3a
     }
 
     else{
@@ -66,7 +85,11 @@ $("#showModal").on("show.bs.modal", function(e) {
 $(".add-btn").on("click", function(e){
 
   // Extract info from data-* attributes of button
+<<<<<<< HEAD
   var button = $(e.currentTarget); // Button that triggered the modal
+=======
+  var button = $(e.currentTarget);
+>>>>>>> 1523024ab59369cc90f6ef843c9c9daae943ad3a
   var userID = button.data('userid');
   var OMDB_ID = button.data('showid');
   var title = $("#ShowTitle").text();
@@ -74,9 +97,11 @@ $(".add-btn").on("click", function(e){
   var imgSplit = imgURL.split("w185/")[1];
   var relation = button.data('rel');
 
+  // Find and/or Add show in database
   $.ajax({
     url: "/api_ShowLookup/"+userID+"/"+OMDB_ID+"/"+title+"/"+imgSplit,
     method: "POST"
+<<<<<<< HEAD
   }).done(function(response){
       $.ajax({
         url: "/api_relation/"+userID+"/"+OMDB_ID+"/"+relation,
@@ -84,6 +109,26 @@ $(".add-btn").on("click", function(e){
       }).done(function(bridgeResponse){
           location.reload();
       })
+=======
+  })
+  .done(function(showRes){
+    console.log("show lookup complete. Found:");
+    console.log(showRes);
+    // Link show to user
+    $.ajax({
+      url: "/api_relation/"+userID+"/"+showRes.id+"/"+relation,
+      method: "POST"
+    }).done(function(bridgeRes){
+        console.log("response: " + bridgeRes);
+        if(bridgeRes){
+          console.log("user_show bridge created");
+        }
+        else{
+          console.log("Show is already in the " + relation);
+        }
+        location.reload();
+    })
+>>>>>>> 1523024ab59369cc90f6ef843c9c9daae943ad3a
   })
 });
 
@@ -102,8 +147,10 @@ function queryShow(showID){
     $("#plot").html(response.overview);
     $("#modImage").attr("src", imgBaseUrl+response.poster_path);
     $(".add-btn").attr("data-showId", showID);
-//    $("#watch-btn").attr("data-showId", showID);
   }); 
 }
+<<<<<<< HEAD
 
 // Delete user_show relationship
+=======
+>>>>>>> 1523024ab59369cc90f6ef843c9c9daae943ad3a
