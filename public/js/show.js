@@ -86,7 +86,6 @@ $(".add-btn").on("click", function(e){
       url: "/api_relation/"+userID+"/"+showRes.id+"/"+relation,
       method: "POST"
     }).done(function(bridgeRes){
-
         if(bridgeRes){
           console.log("user_show bridge created");
         }

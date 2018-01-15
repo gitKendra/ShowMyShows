@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-  // Add a new user to the DB
+  // Add a new user to the if not already exists
   app.post("/api/user", function(req, res) {
     
     db.user.findOrCreate({
@@ -125,9 +125,9 @@ module.exports = function(app) {
 
   });
 
-  // Add new show if it does not already exists
+ // Add new show if if not already exists
   app.post("/api_ShowLookup/:userID/:OMDB_ID/:title/:imgURL", function(req, res) {
-    
+
     var imgBaseUrl = "https://image.tmdb.org/t/p/w185/";
 
     db.show.findOrCreate({
@@ -142,7 +142,6 @@ module.exports = function(app) {
       }
     }).spread((show, created) => {
         plain:true
-
         if(created){
           console.log("SHOW ADDED TO DATABASE");     
         }
