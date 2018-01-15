@@ -28,11 +28,18 @@ h6 {
 	margin-top: 30px;
 }
 
-.navbar {
+#nav-main {
 	-webkit-box-shadow: 0 8px 6px -6px black;
     -moz-box-shadow: 0 8px 6px -6px black;
     box-shadow: 0 8px 6px -6px black;
 }
+.navbar-dark .navbar-nav .nav-link {
+	color: white;
+}
+#nav-user {
+	font-size: 28px;
+}
+
 form, .homebtn {
 	margin-top: 30px;
 	margin-bottom: 35px;
@@ -49,6 +56,10 @@ form, .homebtn {
 	-ms-transform: scale(-1, 1);
 	transform: scale(-1, 1);
 }
+.thumbnail {
+	width: 220px;
+	height: 355px;
+}
 .img-thumbnail {
   background-position: 20px 20px;
   background-color: rgba(5, 5, 5, 0.83);
@@ -62,6 +73,7 @@ form, .homebtn {
   font-size: 20px;
   font-family: 'Passion One', cursive;
   text-shadow: 3px 3px rgba(5, 5, 5, 0.83);
+  word-wrap: normal;
 }
 a:link {
 	color: white;
@@ -75,8 +87,8 @@ i {
 	color:#bdb21f;;
 	font-size: 100px;
 }
-.fa-home:before {
-	font-size: 50px;
+.fa {
+	color: #bdb21f;
 }
 ul {
 	list-style: none;

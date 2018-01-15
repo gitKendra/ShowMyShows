@@ -1,21 +1,32 @@
-<!-- Show's username here -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="nav-user">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <a class="nav-item nav-link" href="/user/{{user_id}}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+      <a class="nav-item nav-link" href="/rel/{{user_id}}/favorite"><i class="fa fa-heart" aria-hidden="true"></i>  Favorites</a>
+      <a class="nav-item nav-link" href="/rel/{{user_id}}/watchList"><i class="fa fa-list" aria-hidden="true"></i>  Watch List</a>
+    </div>
+  <form class="search-bar form-inline my-2 my-lg-0" id="search-form">
+    <input type="text" class="form-control mr-sm-2" placeholder="Find a show" id="show-input">
+    <button type="button" id="search-btn" class="btn btn-default my-2 my-sm-0" data-type="search" data-toggle="modal" data-target="#showModal">Search</button>
+  </form>
+  </div>
+</nav>
 
-<!-- Pass in first all relationship data form server.js -->
-
-
-<div class="row text-center">
+<div class="container">
+  
+<div class="row">  
   <div class="col-md-11">
     <h3 class="relTitle">{{username}} here are all your {{relation}} shows: </h3><br>
-  </div>
-  <div class="col-md-1">
-    <a href="/user/{{user_id}}"><i class="fa fa-home homebtn" aria-hidden="true"></i></a>
   </div>
 </div>
 
 <div class="row rel_list justify-content-md">
 	<div class="col-md">
 		{{#each relationArray}}
-			<div class="rel float-left">
+			<div class="rel thumbnail float-left text-center">
 	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br><p class="titleCaption">{{show.title}}</p><br></a>
 		  	</div>
 		{{/each}}
@@ -55,5 +66,5 @@
     </div>
   </div>
 </div>
-
+</div>
 <script src="/js/show.js"></script>
