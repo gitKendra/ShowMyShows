@@ -80,11 +80,10 @@ a:link {
 	text-decoration: none;
 }
 a:hover {
-	color:#bdb21f;
+	color: #bdb21f;
 	text-decoration: none;
 }
 i {
-	color:#bdb21f;;
 	font-size: 100px;
 }
 .fa {
