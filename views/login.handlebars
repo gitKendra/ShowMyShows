@@ -1,24 +1,27 @@
-
-<div class="row">
+<div class="container">
+<div class="row" style="margin-top: 30px;">
 	<div class="col-md-4">
-		<h3>Add a user: </h3>
+		<div class="row"><h3>Create new user: </h3></div>
 		<form action="/api/user" method="post">
-		    <div class="form-group">
-		        <label for="username">User Name</label>
+		    <div class="row form-group">
+		        <label for="username"><h6>User Name</h6></label>
 		        <input type="text" class="form-control" id="username" placeholder="Enter user name" name="username">
-		        <label for="password">Password</label>
+		        <label for="password"><h6>Password</h6></label>
 		        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
 		    </div>
 
+		    <div class="row">
     		<button type="submit" id="add-user" class="btn btn-success">Add user</button>
+    		</div>
 		</form>
 	</div>	
 	<div class="col-md-8">	
-		<h3>Select a user: </h3>
+		<div class="text-center"><h3>Select a user: </h3></div>
 		<ul class="people_list">
 			{{#each user}}
 	    	<li><a href="/user/{{id}}"><button type="button" class="btn btn-dark btn-block user-login">{{username}}</button></a></li>
 	  		{{/each}}
 		</ul>
 	</div>
+</div>
 </div>

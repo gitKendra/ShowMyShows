@@ -2,9 +2,9 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-  // Add a new user to the if not already exists
+  // Add a new user to the DB
   app.post("/api/user", function(req, res) {
-    // Check if user already exists
+    
     db.user.findOrCreate({
       where: {
         username: req.body.username
@@ -43,7 +43,6 @@ module.exports = function(app) {
 
  //get the newest five of each category and GET to HdnlBars for User Homepage
   app.get("/user/:userid", function(req, res) {
-    console.log("GET /user/userid");
 
     var currentID = req.params.userid;
 
@@ -89,6 +88,7 @@ module.exports = function(app) {
           })
         })
       })
+
   });
 
   // Display all shows in the relation for user
@@ -97,7 +97,6 @@ module.exports = function(app) {
 
     var currentID = req.params.userid;
     var currentRelation = req.params.relation;
-    console.log("RELATION, User Id Selected: " +currentRelation+" "+ currentID);
 
     db.user_show.findAll({
       where:{
@@ -120,16 +119,15 @@ module.exports = function(app) {
           relation: currentRelation,
           relationArray: relationArray
         }
-        //res.json(user);
         res.render("relationship", user);
       })
     })
+
   });
 
-
- // Add new show if if not already exists
+  // Add new show if it does not already exists
   app.post("/api_ShowLookup/:userID/:OMDB_ID/:title/:imgURL", function(req, res) {
-  console.log("POST /api_ShowLookup/:userID/:OMDB_ID/:title/:imgURL");
+    
     var imgBaseUrl = "https://image.tmdb.org/t/p/w185/";
 
     db.show.findOrCreate({
@@ -184,18 +182,6 @@ module.exports = function(app) {
         res.send(false);
       }
     })
-});
+  });
 
-
-  // app.delete("/api_relation/:userShowID", function(req, res) {
-  //   //   db.Author.destroy({
-  //   //     where: {
-  //   //       id: req.params.id
-  //   //     }
-  //   //   }).then(function(dbAuthor) {
-  //   //     res.json(dbAuthor);
-  //   //   });
-  //   // });
-
-  // });
 }

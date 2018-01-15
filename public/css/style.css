@@ -4,32 +4,61 @@ body {
 	color: white;
 }
 
-.navbar, .modal-title, h1, h2, h3, h5{
+.navbar, .modal-title, h1, h2, h3, h5, h6{
 
     font-family: 'Passion One', cursive;
     font-size: 40px;
     text-shadow: 3px 3px rgba(5, 5, 5, 0.83)
 }
-.navbar {
+h1 {
+	font-size: 50px;
+}
+h2 {
+	font-size: 30px;
+}
+h6 {
+	font-size: 20px;
+}
+#title {
+	float: left;
+	margin-top: 20px;
+}
+.relTitle{
+	float: left;
+	margin-top: 30px;
+}
+
+#nav-main {
 	-webkit-box-shadow: 0 8px 6px -6px black;
     -moz-box-shadow: 0 8px 6px -6px black;
     box-shadow: 0 8px 6px -6px black;
 }
-form {
-	margin-top: 10px;
-	margin-bottom: 30px;
+.navbar-dark .navbar-nav .nav-link {
+	color: white;
+}
+#nav-user {
+	font-size: 28px;
+}
+
+form, .homebtn {
+	margin-top: 30px;
+	margin-bottom: 35px;
 	float: right;
 }
 .form-inline .form-control{
 	width: 325px;
-
 }
+
 #showme {
 	-moz-transform: scale(-1, 1);
 	-webkit-transform: scale(-1, 1);
 	-o-transform: scale(-1, 1);
 	-ms-transform: scale(-1, 1);
 	transform: scale(-1, 1);
+}
+.thumbnail {
+	width: 220px;
+	height: 355px;
 }
 .img-thumbnail {
   background-position: 20px 20px;
@@ -44,6 +73,7 @@ form {
   font-size: 20px;
   font-family: 'Passion One', cursive;
   text-shadow: 3px 3px rgba(5, 5, 5, 0.83);
+  word-wrap: normal;
 }
 a:link {
 	color: white;
@@ -57,8 +87,8 @@ i {
 	color:#bdb21f;;
 	font-size: 100px;
 }
-.fa-home:before {
-	font-size: 50px;
+.fa {
+	color: #bdb21f;
 }
 ul {
 	list-style: none;

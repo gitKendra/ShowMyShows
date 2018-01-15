@@ -15,6 +15,10 @@ $.ajax({
 });
 
 // Event handler for user search
+$("#search-btn").click(function(){
+  $("#search-form").submit();
+});
+
 $("#search-form").submit(function(e){
   e.preventDefault();
   var showInput = $("#show-input").val().trim();
@@ -30,9 +34,7 @@ $("#search-form").submit(function(e){
     if (response.results.length == 0){
       $("#show-input").attr("style", "border-color: red; border-width: 1.3px");
       $("#show-input").attr("placeholder", "Show not found");
-      // e.preventDefault();
     }
-
     else{
       omdbId = response.results[0].id;
       queryShow(omdbId);
@@ -78,12 +80,13 @@ $(".add-btn").on("click", function(e){
   .done(function(showRes){
     console.log("show lookup complete. Found:");
     console.log(showRes);
-    // Link show to user
+
+    // Link show to user in database
     $.ajax({
       url: "/api_relation/"+userID+"/"+showRes.id+"/"+relation,
       method: "POST"
     }).done(function(bridgeRes){
-        console.log("response: " + bridgeRes);
+
         if(bridgeRes){
           console.log("user_show bridge created");
         }
@@ -104,7 +107,7 @@ function queryShow(showID){
     method: "GET"
   }).done(function(response) {
 
-    //write to modal
+    // Update to modal
     $("#ShowTitle").html(response.name);
     $("#time").html(response.last_air_date);
     $("#plot").html(response.overview);

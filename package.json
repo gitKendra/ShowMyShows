@@ -4,7 +4,6 @@
   "description": "extension of ShowMeShows, User ability to add shows to watch/favorite lists",
   "main": "server.js",
   "scripts": {
-    "test": "mocha",
     "start": "node server.js"
   },
   "repository": {
