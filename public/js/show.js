@@ -1,14 +1,14 @@
 const API_KEY = "aa07ce021371088334d6308641c7a59f";
 const API_ROOT_URL = "https://api.themoviedb.org/3/";
 
-// Configuration for image url from the movie database
+// Configuration for retrieving images from the movie database API
 let imgBaseUrl;
+
 $.ajax({
   url: API_ROOT_URL + "configuration?api_key=" + API_KEY,
   method: "GET"
-})
-  .done(function(response) {
-    // Set variable from API values
+}).done(function(response) {
+    console.log("Configuration API");
     let baseUrl = response.images.base_url;
     let size = response.images.poster_sizes[2];
     imgBaseUrl = baseUrl + size;
@@ -22,6 +22,7 @@ $("#search-btn").click(function(){
 $("#search-form").submit(function(e){
   e.preventDefault();
   var showInput = $("#show-input").val().trim();
+  console.log(showInput);
 
   // Performing GET requests to the the movie database API
   $.ajax({
@@ -29,13 +30,11 @@ $("#search-form").submit(function(e){
     method: "GET"
   }).done(function(response) {
 
-    // Alert user show not found
+    // Alert user that could not find the show
     if (response.results.length == 0){
       $("#show-input").attr("style", "border-color: red; border-width: 1.3px");
-      $("#show-input").val("");
       $("#show-input").attr("placeholder", "Show not found");
     }
-
     else{
       omdbId = response.results[0].id;
       queryShow(omdbId);
@@ -65,7 +64,7 @@ $("#showModal").on("show.bs.modal", function(e) {
 $(".add-btn").on("click", function(e){
 
   // Extract info from data-* attributes of button
-  var button = $(e.currentTarget); // Button that triggered the modal
+  var button = $(e.currentTarget);
   var userID = button.data('userid');
   var OMDB_ID = button.data('showid');
   var title = $("#ShowTitle").text();
@@ -79,12 +78,21 @@ $(".add-btn").on("click", function(e){
     method: "POST"
   })
   .done(function(showRes){
+    console.log("show lookup complete. Found:");
+    console.log(showRes);
 
     // Link show to user in database
     $.ajax({
       url: "/api_relation/"+userID+"/"+showRes.id+"/"+relation,
       method: "POST"
     }).done(function(bridgeRes){
+
+        if(bridgeRes){
+          console.log("user_show bridge created");
+        }
+        else{
+          console.log("Show is already in the " + relation);
+        }
         location.reload();
     })
   })

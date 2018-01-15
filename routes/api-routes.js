@@ -2,9 +2,9 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-  // Add a new user to the DB if they do not exist
+  // Add a new user to the DB
   app.post("/api/user", function(req, res) {
-
+    
     db.user.findOrCreate({
       where: {
         username: req.body.username
@@ -93,6 +93,7 @@ module.exports = function(app) {
 
   // Display all shows in the relation for user
   app.get("/rel/:userid/:relation", function(req, res) {
+    console.log("GET /rel/:userid/:relation");
 
     var currentID = req.params.userid;
     var currentRelation = req.params.relation;
@@ -124,7 +125,6 @@ module.exports = function(app) {
 
   });
 
-
   // Add new show if it does not already exists
   app.post("/api_ShowLookup/:userID/:OMDB_ID/:title/:imgURL", function(req, res) {
     
@@ -149,13 +149,11 @@ module.exports = function(app) {
         else {
           console.log("SHOW ALREADY IN DATABASE");
         }
-
-        res.send(show);
+      res.send(show);
     })
-
   });
 
-  // Adds a user_show row to database if it does not already exists
+  // Adds a user_show row to database if not already exists
   app.post("/api_relation/:userID/:showID/:relation", function(req, res) {
 
     db.user_show.findOrCreate({
@@ -184,7 +182,6 @@ module.exports = function(app) {
         res.send(false);
       }
     })
-
   });
 
 }

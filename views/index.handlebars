@@ -1,52 +1,3 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="nav-user">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <a class="nav-item nav-link" href="/user/{{user_id}}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-      <a class="nav-item nav-link" href="/rel/{{user_id}}/favorite"><i class="fa fa-heart" aria-hidden="true"></i>  Favorites</a>
-      <a class="nav-item nav-link" href="/rel/{{user_id}}/watchList"><i class="fa fa-list" aria-hidden="true"></i>  Watch List</a>
-    </div>
-	<form class="search-bar form-inline my-2 my-lg-0" id="search-form">
-		<input type="text" class="form-control mr-sm-2" placeholder="Find a show" id="show-input">
-		<button type="button" id="search-btn" class="btn btn-default my-2 my-sm-0" data-type="search" data-toggle="modal" data-target="#showModal">Search</button>
-	</form>
-  </div>
-</nav>
-
-<div class="container">
-  
-<div class="row">
-	<div class="col-md-6">
-		<h1 id="title" data-userId={{user_id}}>Hello {{username}}!!</h1>
-	</div>
-</div>
-
-<!-- Pass in first 5 favorites data form server.js -->
-<a href="/rel/{{user_id}}/favorite"><h3 class="titlecaption">Favorites: </h3></a><br>
-<div class="row fav_list justify-content-md">
-	<div class="col-md">
-		{{#each favorite}}
-			<div class="fav thumbnail float-left text-center">
-	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br><p class="titleCaption">{{show.title}}</p><br></a>
-		  	</div>
-		{{/each}}
-	</div>
-</div>
-
-<!-- Pass in first 5 watchList data form server.js -->
-<a href="/rel/{{user_id}}/watchList"><h3 class="titlecaption">Watch List: </h3></a><br>
-<div class="row watchList justify-content-md">
-	<div class="col-md">
-		{{#each watchList}}
-			<div class="watch thumbnail float-left text-center">
-	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br><p class="titleCaption">{{show.title}}</p><br></a>
-		  	</div>
-		{{/each}}
-	</div>
-</div>
-
 <!-- Search Show Modal -->
 <!-- Modal -->
 <div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="showModalLabel" aria-hidden="true">
@@ -70,8 +21,6 @@
 	    <p id="plot"></p>
       </div>
 
-      <div style="position:relative; padding-bottom:56.25%; overflow:hidden;"><iframe src="https://content.jwplatform.com/players/V7gKg9PI-UbMgy82L.html" width="100%" height="100%" frameborder="0" scrolling="auto" allowfullscreen style="position:absolute;"></iframe></div>
-
       <div class="modal-footer">
         <button type="button" id="fave-btn" class="btn btn-default add-btn" data-rel="favorite" data-userId={{user_id}} data-showId="0">Add to Favorites</button>
         <button type="button" id="watch-btn" class="btn btn-default add-btn" data-rel="watchList" data-userId={{user_id}} data-showId="0">Add to Watchlist</button>
@@ -79,6 +28,52 @@
 
     </div>
   </div>
+</div>
+
+<!-- <p>Search and Manage your TV shows with this app.</p> -->
+<div class="row">
+<div class="col-md-12">
+<form class="search-bar form-inline" id="search-form">
+	<div class="form-group">
+	  <input type="text" class="form-control" placeholder="Find a show" id="show-input">
+	</div>
+	<button type="button" class="btn btn-default" data-type="search" data-toggle="modal" data-target="#showModal">Search</button>
+</form>
+</div>
+</div>
+
+<div class="container">
+  
+<div class="row">
+	<div class="col-md-6">
+		<h1 id="title" data-userId={{user_id}}>Hello {{username}}!!</h1>
+	</div>
+</div>
+
+<!-- Pass in first 5 favorites data form server.js -->
+<a href="/rel/{{user_id}}/favorite"><h3 class="titlecaption">Favorites: </h3></a><br>
+<div class="row fav_list justify-content-md">
+	<div class="col-md">
+		{{#each favorite}}
+			<div class="fav float-left text-center">
+	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br>
+	    		<p class="titleCaption">{{show.title}}</p><br>
+		  	</div>
+		{{/each}}
+	</div>
+</div>
+
+<!-- Pass in first 5 watchList data form server.js -->
+<a href="/rel/{{user_id}}/watchList"><h3 class="titlecaption">Watch List: </h3></a><br>
+<div class="row watchList justify-content-md">
+	<div class="col-md">
+		{{#each watchList}}
+			<div class="watch float-left text-center">
+	    		<img src={{show.imgURL}} class="img-thumbnail" data-id={{show.OMDB_id}} data-type="item" alt="Cinque Terre" data-toggle="modal" data-target="#showModal"><br>
+	    		<p class="titleCaption">{{show.title}}</p><br>
+		  	</div>
+		{{/each}}
+	</div>
 </div>
 
 <script src="/js/show.js"></script>
